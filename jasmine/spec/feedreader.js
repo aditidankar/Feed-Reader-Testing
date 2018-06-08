@@ -1,5 +1,8 @@
 $(function() {
 
+    let firstEntry,
+        lastEntry;
+
     describe('RSS Feeds', function() {
         // Checks if all feeds are defined
         it('are defined', function() {
@@ -60,10 +63,28 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    // Test suite 'New Feed Selection'
+    describe('New Feed Selection', function() {
+        // For the asynchronous loadFeed()
+        beforeEach(function(done) {
+            $('.feed').empty();
+            loadFeed(0, function() {
+                firstEntry = $('.feed').find(allFeeds.url);
+                done();
+            });
+            loadFeed(1, function() {
+                lastEntry = $('.feed').find(allFeeds.url);
+                done();
+            });
+        });
 
-    /* TODO: Write a test that ensures when a new feed is loaded
-     * by the loadFeed function that the content actually changes.
-     * Remember, loadFeed() is asynchronous.
-     */
+        // Checks the loading of a new feed
+        // different than the old one
+        // and the content actually changed
+        it('loads new feed', function() {
+            expect(firstEntry).not.toBe(lastEntry);
+
+        });
+    });
+
 }());
