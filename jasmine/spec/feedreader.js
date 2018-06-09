@@ -61,6 +61,7 @@ $(function() {
         it('has more than 0 entries', function() {
             expect($('.feed .entry')).toBeDefined();
             expect($('.feed .entry')).not.toBeNull();
+            expect($('.feed .entry').length).not.toBeNull();
         });
     });
 
