@@ -56,9 +56,11 @@ $(function() {
             });
         });
 
+
         // Checks if the feed has at least one entry
         it('has more than 0 entries', function() {
-            expect($('.entry .feed')).toBeDefined();
+            expect($('.feed .entry')).toBeDefined();
+            expect($('.feed .entry')).not.toBeNull();
         });
     });
 
@@ -70,11 +72,11 @@ $(function() {
             $('.feed').empty();
             loadFeed(0, function() {
                 firstEntry = $('.feed').find(allFeeds.url);
-                done();
-            });
-            loadFeed(1, function() {
-                lastEntry = $('.feed').find(allFeeds.url);
-                done();
+
+                loadFeed(1, function() {
+                    lastEntry = $('.feed').find(allFeeds.url);
+                    done();
+                });
             });
         });
 
