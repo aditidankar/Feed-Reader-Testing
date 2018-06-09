@@ -55,13 +55,13 @@ $(function() {
                 done();
             });
         });
-
+        beforeEach(function(done) {
+            loadFeed(0, done);
+        });
 
         // Checks if the feed has at least one entry
-        it('has more than 0 entries', function() {
-            expect($('.feed .entry')).toBeDefined();
-            expect($('.feed .entry')).not.toBeNull();
-            expect($('.feed .entry').length).not.toBeNull();
+        it('are present', function() {
+            expect($('.feed .entry').length).toBeGreaterThan(0);
         });
     });
 
